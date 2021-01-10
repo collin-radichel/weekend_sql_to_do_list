@@ -1,6 +1,6 @@
 # jQuery To-Do-List w/ SQL
 
-![Screenshot of To-Do-List](screenShot.png)
+![Screenshot of To-Do-List](server/public/images/screenShot.png)
 
 ## This is a full CRUD To-Do App.  You can create tasks and mark tasks as completed.  All data is stored in a database.
 
