@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $("#viewTasks").on("click", ".taskComplete", completeTaskToggle);
-  // $('#viewTasks').on('click', '.deleteBtn', deleteBtn);
+  $('#viewTasks').on('click', '.deleteBtn', deleteBtn);
   $("#addTaskBtn").on("click", function () {
     console.log("in addButton on click");
 
@@ -117,3 +117,41 @@ function renderTasks(tasks) {
 }
 
 
+function deleteBtn() {
+    console.log("clicked delete");
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to recover this task!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            ajaxDelete();
+          Swal.fire(
+            'Deleted!',
+            'Your task has been deleted.',
+            'success'
+          )
+        }
+      })
+  
+    const task = $(this).closest("tr").data("task").id;
+    console.log(task);
+  
+    function ajaxDelete() {
+      $.ajax({
+        type: "DELETE",
+        url: `/tasks/${task}`,
+      })
+        .then(function (response) {
+          getTasks();
+        })
+        .catch(function (error) {
+          alert("error in delete");
+        });
+    }
+  }
