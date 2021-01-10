@@ -1,9 +1,8 @@
 # jQuery To-Do-List w/ SQL
 
-[Screenshot of To-Do-List](screenShot.png), this line may be removed once you have updated the README.md
+![Screenshot of To-Do-List](screenShot.png)
 
-## Description
+## This is a full CRUD To-Do App.  You can create tasks and mark tasks as completed.  All data is stored in a database.
 
-Your project description goes here. What problem did you solve? How did you solve it?
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
