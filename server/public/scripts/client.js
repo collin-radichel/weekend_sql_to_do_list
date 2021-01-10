@@ -12,6 +12,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $("#viewTasks").on("click", ".taskComplete", completeTaskToggle);
+  $("#viewCompletedTasks").on("click", ".taskComplete", completeTaskToggle);
   $('#viewTasks').on('click', '.deleteBtn', deleteBtn);
   $("#addTaskBtn").on("click", function () {
     console.log("in addButton on click");
@@ -81,6 +82,7 @@ function getTasks() {
   console.log("in getTasks");
 
   $("#viewTasks").empty();
+  $("#viewCompletedTasks").empty();
   $.ajax({
     type: "GET",
     url: "/tasks",
@@ -112,17 +114,18 @@ function renderTasks(tasks) {
       $tr.append(
         `<td><button class = "taskComplete btn btn-primary">Click when your task is completed</button></td>`
       );
+      $("#viewTasks").append($tr);
     } else if (task.completed === true){
      $($tr).addClass("table-success");
       $tr.append(
         `<td><button class = "taskComplete btn btn-secondary">Task Completed! Click to undo</button></td>`
       );
-      
+      $("#viewCompletedTasks").append($tr);
     }
     $tr.append(
       `<td><button class = "deleteBtn btn btn-danger">DELETE</button></td>`
     );
-    $("#viewTasks").append($tr);
+    
   }
 }
 

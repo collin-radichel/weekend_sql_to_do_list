@@ -29,7 +29,7 @@
       <button id="addTaskBtn" class="btn btn-primary">Add Task</button>
     </section>
     <section>
-        <h2>Here is your list of tasks:</h2>
+        <h2>Tasks To Complete:</h2>
         <table class="table">
             <thead>
                 <tr class="table-info">
@@ -43,6 +43,22 @@
             </thead>
             <tbody id="viewTasks"></tbody>
         </table>
+        <div>
+            <h2>Completed Tasks:</h2>
+            <table class="table">
+                <thead>
+                    <tr class="table-success">
+                        <th>Due Date</th>
+                        <th>Task</th>
+                        <th>Completed</th>
+                        <th>Notes</th>
+                        <th>Done with your task?</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="viewCompletedTasks"></tbody>
+            </table>
+        </div>
     </section>
   </body>
 </html>
