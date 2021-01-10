@@ -121,13 +121,13 @@ function deleteBtn() {
     console.log("clicked delete");
 
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to recover this task!",
-        icon: 'warning',
+        title: "This will permanently delete the task!",
+        // text: "You won't be able to recover this task!",
+        imageUrl: 'https://media.giphy.com/media/41wiNJ6HB8JLW/giphy.gif',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete this task!'
       }).then((result) => {
         if (result.isConfirmed) {
             ajaxDelete();
