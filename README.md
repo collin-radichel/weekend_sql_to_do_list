@@ -1,6 +1,6 @@
-# Project Name
+# jQuery To-Do-List w/ SQL
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+[Screenshot of To-Do-List](screenShot.png), this line may be removed once you have updated the README.md
 
 ## Description
 
