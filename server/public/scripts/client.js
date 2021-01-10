@@ -1,3 +1,5 @@
+
+
 console.log("client loaded");
 
 $(document).ready(function () {
@@ -91,9 +93,17 @@ function getTasks() {
 function renderTasks(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
+    let time = new Date(task.dueDate).toLocaleDateString(
+        'en-gb',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+      );
     let $tr = $(`<tr></tr>`);
     $tr.data("task", task);
-    $tr.append(`<td>${task.dueDate}</td>`);
+    $tr.append(`<td>${time}</td>`);
     $tr.append(`<td>${task.task}</td>`);
     $tr.append(`<td>${task.completed}</td>`);
     $tr.append(`<td>${task.notes}</td>`);

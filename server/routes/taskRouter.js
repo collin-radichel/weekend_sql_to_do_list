@@ -3,9 +3,10 @@ const express = require("express");
 const taskRouter = express.Router();
 const pool = require("../modules/pool.js"); // DB CONNECTION
 
+
 // GET Route
 taskRouter.get("/", (req, res) => {
-  const queryText = `SELECT * FROM "tasks" ORDER BY "dueDate";`;
+  const queryText = `SELECT * FROM "tasks" ORDER BY "completed";`;
   pool
     .query(queryText)
     .then((result) => {
@@ -80,5 +81,6 @@ taskRouter.delete("/:id", (req, res) => {
     res.sendStatus(204);
   });
 });
+
 
 module.exports = taskRouter;
