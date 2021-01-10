@@ -56,7 +56,7 @@ taskRouter.put("/:id", (req, res) => {
                   WHERE "id" = $1`;
   }
 
-  console.log(`Updating Task with ${id}, setting completed to: `, completed);
+  console.log(`Updating Task with id: ${id}, setting completed to: `, completed);
 
   pool
     .query(queryText, [id])

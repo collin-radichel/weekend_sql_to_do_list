@@ -2,3 +2,7 @@
     text-align: center;
     background-color: tan;
 }
+
+.completed {
+    text-decoration: line-through;
+}

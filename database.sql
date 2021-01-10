@@ -2,7 +2,7 @@ CREATE TABLE "tasks" (
 	"id" SERIAL PRIMARY KEY, 
 	"dueDate" DATE,
     "task" VARCHAR (70),
-	"completed" BOOLEAN,
+	"completed" BOOLEAN DEFAULT FALSE,
     "notes" VARCHAR(120)
 );
 

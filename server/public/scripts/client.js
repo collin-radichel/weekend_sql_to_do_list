@@ -1,5 +1,3 @@
-
-
 console.log("client loaded");
 
 $(document).ready(function () {
@@ -12,8 +10,11 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $("#viewTasks").on("click", ".taskComplete", completeTaskToggle);
+  $("#viewTasks").on("click", ".deleteBtn", deleteBtn);
+
   $("#viewCompletedTasks").on("click", ".taskComplete", completeTaskToggle);
-  $('#viewTasks').on('click', '.deleteBtn', deleteBtn);
+  $("#viewCompletedTasks").on("click", ".deleteBtn", deleteBtn);
+
   $("#addTaskBtn").on("click", function () {
     console.log("in addButton on click");
 
@@ -43,20 +44,20 @@ function setupClickListeners() {
 }
 
 function addTask(newTask) {
-    console.log("in addTask", newTask);
-  
-    $.ajax({
-      type: "POST",
-      url: "/tasks",
-      data: newTask,
-    }).then(function (response) {
-      $("#dateIn").val(""),
-        $("#taskIn").val(""),
-        $("#completedIn").val(""),
-        $("#notesIn").val(""),
-        getTasks();
-    });
-  }
+  console.log("in addTask", newTask);
+
+  $.ajax({
+    type: "POST",
+    url: "/tasks",
+    data: newTask,
+  }).then(function (response) {
+    $("#dateIn").val(""),
+      $("#taskIn").val(""),
+      $("#completedIn").val(""),
+      $("#notesIn").val(""),
+      getTasks();
+  });
+}
 
 function completeTaskToggle() {
   console.log("clicked complete task");
@@ -91,18 +92,14 @@ function getTasks() {
   });
 }
 
-
 function renderTasks(tasks) {
   for (let i = 0; i < tasks.length; i++) {
     let task = tasks[i];
-    let time = new Date(task.dueDate).toLocaleDateString(
-        'en-gb',
-        {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        }
-      );
+    let time = new Date(task.dueDate).toLocaleDateString("en-gb", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
     let $tr = $(`<tr></tr>`);
     $tr.data("task", task);
     $tr.append(`<td>${time}</td>`);
@@ -110,61 +107,55 @@ function renderTasks(tasks) {
     $tr.append(`<td>${task.completed}</td>`);
     $tr.append(`<td>${task.notes}</td>`);
     if (task.completed === false) {
-        $($tr).addClass("table-warning");
+      $($tr).addClass("table-warning");
       $tr.append(
-        `<td><button class = "taskComplete btn btn-primary">Click when your task is completed</button></td>`
+        `<td><button class = "taskComplete btn btn-success">Task Complete</button></td>`
       );
       $("#viewTasks").append($tr);
-    } else if (task.completed === true){
-     $($tr).addClass("table-success");
+    } else if (task.completed === true) {
+      $($tr).addClass("table-success completed");
       $tr.append(
-        `<td><button class = "taskComplete btn btn-secondary">Task Completed! Click to undo</button></td>`
+        `<td><button class = "taskComplete btn btn-secondary">Task Completed! Click to Undo</button></td>`
       );
       $("#viewCompletedTasks").append($tr);
     }
     $tr.append(
       `<td><button class = "deleteBtn btn btn-danger">DELETE</button></td>`
     );
-    
   }
 }
 
-
 function deleteBtn() {
-    console.log("clicked delete");
+  console.log("clicked delete");
 
-    Swal.fire({
-        title: "This will permanently delete the task!",
-        // text: "You won't be able to recover this task!",
-        imageUrl: 'https://media.giphy.com/media/41wiNJ6HB8JLW/giphy.gif',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete this task!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-            ajaxDelete();
-          Swal.fire(
-            'Deleted!',
-            'Your task has been deleted.',
-            'success'
-          )
-        }
-      })
-  
-    const task = $(this).closest("tr").data("task").id;
-    console.log(task);
-  
-    function ajaxDelete() {
-      $.ajax({
-        type: "DELETE",
-        url: `/tasks/${task}`,
-      })
-        .then(function (response) {
-          getTasks();
-        })
-        .catch(function (error) {
-          alert("error in delete");
-        });
+  Swal.fire({
+    title: "This will permanently delete the task!",
+    // text: "You won't be able to recover this task!",
+    imageUrl: "https://media.giphy.com/media/41wiNJ6HB8JLW/giphy.gif",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete this task!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      ajaxDelete();
+      Swal.fire("Deleted!", "Your task has been deleted.", "success");
     }
+  });
+
+  const task = $(this).closest("tr").data("task").id;
+  console.log(task);
+
+  function ajaxDelete() {
+    $.ajax({
+      type: "DELETE",
+      url: `/tasks/${task}`,
+    })
+      .then(function (response) {
+        getTasks();
+      })
+      .catch(function (error) {
+        alert("error in delete");
+      });
   }
+}
