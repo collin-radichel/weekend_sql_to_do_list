@@ -21,7 +21,7 @@ function setupClickListeners() {
     let taskToSend = {
       dueDate: $("#dateIn").val(),
       task: $("#taskIn").val(),
-      completed: $("#completedIn").val(),
+      completed: $("#completedIn").is(':checked'),
       notes: $("#notesIn").val(),
     };
 
@@ -29,7 +29,6 @@ function setupClickListeners() {
     if (
       taskToSend.dueDate &&
       taskToSend.task &&
-      taskToSend.completed &&
       taskToSend.notes
     ) {
       addTask(taskToSend);
@@ -37,7 +36,8 @@ function setupClickListeners() {
       Swal.fire({
         title: "This is not the task you want to submit",
         imageUrl: "https://media.giphy.com/media/4560Nv2656Gv0Lvp9F/giphy.gif",
-        confirmButtonText: "This is not the task I want to submit",
+        text : "Please fill out all inputs fields before submitting your task",
+        confirmButtonText: "This is not the task I want to submit"
       });
     }
   });
@@ -53,7 +53,7 @@ function addTask(newTask) {
   }).then(function (response) {
     $("#dateIn").val(""),
       $("#taskIn").val(""),
-      $("#completedIn").val(""),
+      $("#completedIn").prop('checked', false),
       $("#notesIn").val(""),
       getTasks();
   });
@@ -130,7 +130,6 @@ function deleteBtn() {
 
   Swal.fire({
     title: "This will permanently delete the task!",
-    // text: "You won't be able to recover this task!",
     imageUrl: "https://media.giphy.com/media/41wiNJ6HB8JLW/giphy.gif",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
