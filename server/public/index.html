@@ -19,46 +19,51 @@
       <h2>Add Tasks Here:</h2>
       <input type="date" id="dateIn" value="" placeholder="Due Date" />
       <input type="text" id="taskIn" value="" placeholder="Task" />
-      <label for="completedIn">Select if task is already completed:</label>
-      <input
-        type="checkbox"
-        id="completedIn"
-        value=""
-      />
-      <input type="text" id="notesIn" value="" placeholder="Notes" />
-      <button id="addTaskBtn" class="btn btn-primary">Add Task</button>
+      <div>
+        <label class="form-check-label" for="completedIn"
+          >Mark if Task is Complete</label
+        >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="completedIn"
+          value=""
+        />
+        <input type="text" id="notesIn" value="" placeholder="Notes" />
+        <button id="addTaskBtn" class="btn btn-primary">Add Task</button>
+      </div>
     </section>
     <section>
-        <h2>Tasks To Complete:</h2>
+      <h2>Tasks To Complete:</h2>
+      <table class="table">
+        <thead>
+          <tr class="table-info">
+            <th>Due Date</th>
+            <th>Task</th>
+            <th>Completed</th>
+            <th>Notes</th>
+            <th>Done with your task?</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody id="viewTasks"></tbody>
+      </table>
+      <div>
+        <h2>Completed Tasks:</h2>
         <table class="table">
-            <thead>
-                <tr class="table-info">
-                    <th>Due Date</th>
-                    <th>Task</th>
-                    <th>Completed</th>
-                    <th>Notes</th>
-                    <th>Done with your task?</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
-            <tbody id="viewTasks"></tbody>
+          <thead>
+            <tr class="table-success">
+              <th>Due Date</th>
+              <th>Task</th>
+              <th>Completed</th>
+              <th>Notes</th>
+              <th>Done with your task?</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="viewCompletedTasks"></tbody>
         </table>
-        <div>
-            <h2>Completed Tasks:</h2>
-            <table class="table">
-                <thead>
-                    <tr class="table-success">
-                        <th>Due Date</th>
-                        <th>Task</th>
-                        <th>Completed</th>
-                        <th>Notes</th>
-                        <th>Done with your task?</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
-                <tbody id="viewCompletedTasks"></tbody>
-            </table>
-        </div>
+      </div>
     </section>
   </body>
 </html>
