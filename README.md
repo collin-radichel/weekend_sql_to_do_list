@@ -8,7 +8,7 @@ To-Do-List is an app that allows the user to create tasks, mark them as complete
 
 ## Screenshots
 ![Screenshot of To-Do-List](server/public/images/screenShot.png)
-![Screen Shot 2021-03-25 at 10 41 43 AM](https://user-images.githubusercontent.com/73554031/112500866-c1058380-8d56-11eb-8c28-5a062d5fe434.png)
+![Screen Shot 2021-03-25 at 10 41 23 AM](https://user-images.githubusercontent.com/73554031/112501912-a253bc80-8d57-11eb-89b7-96bb4e4b3c70.png)
 
 
 ### Prerequisites
