@@ -14,7 +14,7 @@ To-Do-List is an app that allows the user to create tasks, and remove them from 
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- [Postico](https://eggerapps.at/postico/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 
 ## Built With
