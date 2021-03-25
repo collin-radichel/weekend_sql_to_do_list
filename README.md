@@ -4,7 +4,7 @@ _Duration: 2-day weekend challenge_
 
 ## Description
 
-To-Do-List is an app that allows the user to create tasks, and remove them from the list. All tasks are stored on a database until deleted by the user. Completed tasks will have a green background, and a yellow button to re-mark them as not complete.
+To-Do-List is an app that allows the user to create tasks, and remove them from the list. All tasks are stored on a database until deleted by the user. Completed tasks will be moved down into the completed section when marked complete.  You can also hit the undo button to bring that task back up into your to-do list.
 
 ## Screenshots
 ![Screenshot of To-Do-List](server/public/images/screenShot.png)
