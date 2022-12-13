@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/collin-radichel/weekend_sql_to_do_list#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "moment": "^2.29.1",
     "pg": "^8.5.1",
     "sweetalert2": "^10.13.0"
